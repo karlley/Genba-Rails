@@ -4,7 +4,7 @@
 
 ### irb でオブジェクトを調べる
 
-```
+```ruby
 # class
 > "氏名".class
 => String
@@ -21,7 +21,7 @@
 
 ### irb でRubyファイルを実行
 
-```
+```ruby
 > require './file_name.rb'
 ```
 
@@ -35,7 +35,7 @@
 * セッター: インスタンス変数を代入する為のメソッド
 * ゲッター: インスタンス変数を参照するメソッド
 
-```
+```ruby
 class User
   # セッター
   def name = (name)
@@ -58,7 +58,7 @@ end
 
 クラスに属性を追加する
 
-```
+```ruby
 # User にname 属性のゲッター, セッターを追加
 class User
   attr_accessor :name
@@ -76,7 +76,7 @@ end
 
 属性を追加してメソッドで呼び出し
 
-```
+```ruby
 class User
   attr_accessor :name, :address, :email
 
@@ -86,7 +86,7 @@ class User
 end
 ```
 
-```
+```ruby
 > user = User.new
 > user.name = "name1"
 > user.address = "fukuoka"
@@ -98,7 +98,7 @@ end
 
 インスタンス作成時に値をセットする
 
-```
+```ruby
 # name, address, email をインスタンス生成時に作成し、値を変更できないようにする
 class User
   # attr_reader にすることで読み込み専用
@@ -116,7 +116,7 @@ end
 * メソッドの呼び出しに制限を掛ける
 * 不用意に呼び出されたくないメソッドに対して使用
 
-```
+```ruby
 class Person
   def initialize(money)
     @money = money
@@ -133,7 +133,7 @@ class Person
 end
 ```
 
-```
+```ruby
 > Person.new(5000000)
 
 # public メソッド
@@ -149,7 +149,7 @@ end
 
 親クラスのメソッドを子クラスで上書きする
 
-```
+```ruby
 class BaseTask
   def puts_message
     puts 'BaseTaskのタイトル'
@@ -166,7 +166,7 @@ class Task < Basetask
 end
 ```
 
-```
+```ruby
 > task = Task.new
 > puts task.puts_message
 BeseTask のタイトル
@@ -177,7 +177,7 @@ Task のタイトル
 
 一連の振る舞いをまとめてメソッドに読み込む
 
-```
+```ruby
 module Chatting
   def chat
     "hello"
@@ -197,7 +197,7 @@ class Human
 end
 ```
 
-```
+```ruby
 > taro = Human.new
 > taro.chat
 => "hello"
@@ -209,7 +209,7 @@ end
 
 エラーが発生するかもしれないコードを補足して処理をする
 
-```
+```ruby
 # 例外が発生するかもしれないコード
 begin
   do_something
@@ -223,7 +223,7 @@ end
 
 代入する際にnil にならないようにデフォルト値を設定する
 
-```
+```ruby
 # @chilidren がnil の場合は空の配列を代入する
 def chilidren
   @children ||= []
@@ -234,7 +234,7 @@ end
 
 レシーバがnil でもエラーが発生しなくなる
 
-```
+```ruby
 class User
   def name
     "名前"
@@ -242,7 +242,7 @@ class User
 end
 ```
 
-```
+```ruby
 > user = User.new
 > user.name
 => "名前"
@@ -259,7 +259,7 @@ end
 
 object が空の場合はname にnil を代入する
 
-```
+```ruby
 name = object&.name
 ```
 
@@ -271,7 +271,7 @@ name = object&.name
 
 全ての要素が文字列
 
-```
+```ruby
 > ary = %w(apple banana orange)
 > p ary
 => ["apple", "banana", "orange"]
@@ -281,7 +281,7 @@ name = object&.name
 
 全ての要素がシンボル
 
-```
+```ruby
 ary = %i(apple, banana, orange)
 > p ary
 => [:apple, :banana, :orange]
@@ -291,7 +291,7 @@ ary = %i(apple, banana, orange)
 
 配列の各要素に対してブロックを実行した結果を新たな配列にして返す
 
-```
+```ruby
 class User
   attr_accessor :name
 end
@@ -334,7 +334,7 @@ names = users.map(&:name)
 
 ### postgreSQL サーバ起動
 
-```
+```Shell
 # 起動
 $ brew e
 services start postgresql
@@ -346,7 +346,7 @@ $ brew services stop postgresql
 
 postgreSQL をDBに使う場合はアプリ作成後にサーバを起動して開発を進める
 
-```
+```Shell
 $ rails new app_name -d postgresql
 $ brew services start postgresql
 $ bin/rails db:create
@@ -355,7 +355,7 @@ $ bin/rails s
 
 DB 確認
 
-```
+```Shell
 $ psql -l
 ```
 
@@ -365,7 +365,7 @@ http://localhost:3000/
 
 ### rails generate
 
-```
+```Shell
 # User モデル作成(単数形, キャメルケース)
 $ bin/rails g model User
 # users コントローラ作成(複数形, スネークケース)
@@ -380,7 +380,7 @@ $ bin/rails g controller users
 * `キー: 値` で表現
 * エイリアスを使い共通化できる
 
-```
+```yaml
 animal: &animal
   cat: 'ネコ'
   dog: '犬'
@@ -412,14 +412,14 @@ animal_1:
 
 2つのGem を導入
 
-```
+```ruby
 gem 'slim-rails'
 gem 'html2slim'
 ```
 
 app/views/layouts/ をSlim に変換
 
-```
+```Shell
 $ bundle exec erb2slim app/views/layouts/ --delete
 ```
 
@@ -427,13 +427,13 @@ $ bundle exec erb2slim app/views/layouts/ --delete
 
 bootstrap gem をインストールする
 
-```
+```ruby
 gem 'bootstrap'
 ```
 
 scss ファイル設置
 
-```
+```Shell
 # application.css 削除
 $ rm app/assets/stylesheets/application.css
 # application.scss 作成
@@ -442,7 +442,7 @@ $ touch app/assets/stylesheets/application.scss
 
 application.scss に追記
 
-```
+```Shell
 # bootstrap 読み込み
 @import "bootstrap";
 ```
@@ -451,14 +451,14 @@ application.scss に追記
 
 英語以外の言語で表示する
 
-```
+```Shell
 # 日本語翻訳ファイルをダウンロードする
 $ wget https://raw.githubusercontent.com/svenfuchs/rails-i18n/master/rails/locale/ja.yml --output document=config/locales/ja.yml
 ```
 
 config/initializers/locale.rb 作成 > 追記
 
-```
+```ruby
 Rails.application.config.i18n.default_locale = :ja
 ```
 
@@ -470,7 +470,7 @@ index, show, new, create, edit, update, destroy を一括追加
 
 redirect_to でのリダイレクト先でメッセージを表示する
 
-```
+```ruby
 redirect_to tasks_url, notice: "タスク「#{task.name}」を登録しました"
 # 下記と同じ
 flash[:notice] = "タスク「#{task.name}」を登録しました"
@@ -479,7 +479,7 @@ redirect_to tasks_url
 
 application.html.slim に追記
 
-```
+```ruby
 .container
   - if flash.notice.present?
     .alert.alert-success= flash.notice
@@ -490,7 +490,7 @@ application.html.slim に追記
 
 テキストに含まれる危険なHTML を除外し改行などを適切な形で表示する
 
-```
+```ruby
 # h メソッドをon にしてdiv タグで表示内容を囲む
 simple_format(h(@task.description), {}, sanitize: false, wrapper_tag: "div")
 ```
@@ -501,7 +501,7 @@ simple_format(h(@task.description), {}, sanitize: false, wrapper_tag: "div")
 * ファイル名は頭にアンダースコア
 * ディレクトリはapp/views/controller_name/_file_name.html.slim
 
-```
+```ruby
 # パーシャルの読み込み
 = render partial: 'form', locales: { task: @task }
 ```
@@ -512,7 +512,7 @@ simple_format(h(@task.description), {}, sanitize: false, wrapper_tag: "div")
 
 ### 環境別にマイグレーション
 
-```
+```Shell
 # 本番環境
 $ bin/rails db:migrate RAILS_ENV=production
 # テスト環境
@@ -521,7 +521,7 @@ $ bin/rails db:migrate RAILS_ENV=test
 
 ### バージョンの上げ下げ
 
-```
+```Shell
 # up
 $ rails db:migrate
 # down
@@ -541,7 +541,7 @@ $ rails migrate:redo
 
 値がnull の場合はDB に保存しないようにマイグレーションファイルに追記すること
 
-```
+```ruby
 def change
   create_table :task do |t|
     t.string :name, null: false
@@ -549,7 +549,7 @@ def change
 
 DB 作成後に追加する場合
 
-```
+```ruby
 # change_column_null でNOT NULL を付与する
 def change
   change_column_null :tasks, :name, false
@@ -560,7 +560,7 @@ end
 
 DB 保存時に重複したデータを弾く
 
-```
+```ruby
 def change
   t.timestamps
   t.index :name, unique: true
@@ -568,7 +568,7 @@ def change
 
 DB 作成後に変更
 
-```
+```ruby
 def change
   add_index :tasks, name, unique: true
 end
@@ -580,13 +580,13 @@ DB 保存前のデータの検証
 
 #### コンソールでvalidate をスキップ
 
-```
+```Shell
 > task.save(validate: false)
 ```
 
 #### コンソールでの確認
 
-```
+```ruby
 # エラー表示
 > task.errors
 # 検証エラーメッセージ
@@ -609,7 +609,7 @@ DB 保存前のデータの検証
 
 ブラウザからのリクエストを保持する機能
 
-```
+```ruby
 # 値を保持
 session[:user_id] = @user.id
 # 値を取り出す
@@ -627,7 +627,7 @@ session[:user_id] = @user.id
 * データが漏洩してもパスワードは復元できないので安全
 * has_secure_password を使う為に必要
 
-```
+```Shell
 # password_digest を使用してUser モデルを作成
 $ bin/rails g model user name:string email:string password_digest:string 
 ```
@@ -639,7 +639,7 @@ $ bin/rails g model user name:string email:string password_digest:string
 
 #### 1. bcrypt gem 追加
 
-```
+```ruby
 # Gemfile のコメントアウトを外す
 gem 'bcrypt', '-> 3.1.7'
 ```
@@ -648,7 +648,7 @@ gem 'bcrypt', '-> 3.1.7'
 
 モデルに追記
 
-```
+```ruby
 class User < ApplicationRecord
   has_secure_password
 end
@@ -666,7 +666,7 @@ end
 
 ログイン機能を実行するsession_controller.rb で使用する
 
-```
+```ruby
 def create
   # メールアドレスでユーザ検索
   user = User.find_by(email: session_params[:email])
@@ -697,7 +697,7 @@ private
 * ログイン機能でアクションに制限を掛けたい場合などに使用する
 * 共通化させておいて特定のコントローラには適用させない使い方が一般的
 
-```
+```ruby
 # 特定のコントローラに適用させない
 # 適用させたくないコントローラに記述
 # 例) login_required をSessionコントローラに適用させたくない場合
@@ -733,7 +733,7 @@ end
 2. 条件(クエリーメソッド)
 3. 実行
 
-```
+```ruby
 # 起点. 条件. 実行
 User.where(admin:true).first
 ```
@@ -743,7 +743,7 @@ User.where(admin:true).first
 * クエリーメソッドを呼んだ時点で絞り込みは実行されず、実行にあたるメソッドが呼ばれた時点で実行される
 * 上記理由からコンソール等でクエリを確認する際に使用する
 
-```
+```ruby
 # to_sql を使い絞り込み結果を確認
 > User.where(admin: true).to_sql
 => "SELECT \"users\".* FROM \"users\" WHERE \"users\".\"admin\" = 'TRUE'
@@ -754,7 +754,7 @@ User.where(admin:true).first
 * クエリーメソッドをまとめて名前をつける事で再利用しやすくすること
 * Model でスコープを定義 > Controller で呼び出して使用
 
-```
+```ruby
 # Model にrecentスコープを定義する
 class Task < ApplicationRecord
   belongs_to :user
@@ -763,7 +763,7 @@ class Task < ApplicationRecord
 end
 ```
 
-```
+```ruby
 # コントローラでの呼び出し
 def set_task
   @task = current_user.tasks.recent
@@ -775,11 +775,11 @@ end
 * rails_autolink Gem を使用
 * view で呼び出す事で使用する
 
-```
+```ruby
 gem 'rails_autolink'
 ```
 
-```
+```ruby
 # auto_link 呼び出し
 tr
   th= Task.human_attribute_name(:description)
@@ -830,12 +830,12 @@ tr
 2. capybara を`spec/spec_helper.rb` で読み込む
 3. FactryBot Gem インストール
 
-```
+```ruby
 # RSpec インストール
 gem 'rspec-rails', '-> 3.7'
 ```
 
-```
+```ryby
 # spec/spec_helper.rb でcapybara の設定
 # capibara 読み込み
 require 'capybara/rspec'
@@ -847,7 +847,7 @@ RSpec.configure do |config|
   end
 ```
 
-```
+```ruby
 # FactoryBot インストール
 gem 'factory_bot_rails', '-> 4.11'
 ```
@@ -863,7 +863,7 @@ gem 'factory_bot_rails', '-> 4.11'
 
 spec/factroies/model_name.rb にテンプレートファイルを作成
 
-```
+```ruby
 FactoryBot.define do
   factory :model_name do
     name { 'テストユーザー' }
@@ -892,7 +892,7 @@ end
 * 対象とするモデルのデータのCRUD機能のルート一式(7つのアクション)を一括定義できる
 * `:only` ,`:except` を使う事で生成するアクションを制限できる
 
-```
+```ruby
 #:only で指定したアクションのみ生成
 resources :tasks, only: [:index]
 
@@ -917,7 +917,7 @@ resources :tasks, except: [:delete, :edit, :update]
 
 複数の属性の一括代入
 
-```
+```ruby
 # 一括代入
 > Task = Task.new(name: 'ラーメン食べたい', description: 今すぐ食べたい')
 ```
@@ -964,7 +964,7 @@ production 環境, development 環境で挙動が異なる
 
 検索機能を追加するGem
 
-```
+```ruby
 gem 'ransack'
 ```
 
@@ -991,7 +991,7 @@ gem 'ransack'
 
 シンプルなsmtp サーバを立てて送信されたメールをブラウザ上で確認できるGem
 
-```
+```ruby
 gem 'mailcatcher'
 ```
 
